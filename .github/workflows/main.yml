@@ -7,9 +7,9 @@ jobs:
     steps:
       - name: Bgm Collection Card
         id: bgm
-        uses: xiaoyvyv/bangumi-action@v1.1.7
+        uses: xiaoyvyv/bangumi-action@v1.1.9
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: '${{secrets.GITHUB_TOKEN}}'
           bgm-user-id: 'xiaoyvyv'
           bgm-img-path: './bgm/card.svg'
           
