@@ -1,4 +1,3 @@
-
 name: Bgm-Data-Sync
 on:
   # 每日零点执行（这个配置最小间隔5分钟）
@@ -15,8 +14,11 @@ jobs:
     steps:
       - name: Bgm Collection Card
         id: bgm
-        uses: xiaoyvyv/bangumi-action@v1.1.14
+        uses: xiaoyvyv/bangumi-action@v1.1.15
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           bgm-user-id: 'xiaoyvyv'
           bgm-img-path: 'bgm/card.svg'
+
+      - name: Get the output image url
+        run: echo "图片生成的链接地址 ${{ steps.bgm.outputs.message }}"
