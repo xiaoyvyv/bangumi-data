@@ -1,24 +1,22 @@
+
 name: Bgm-Data-Sync
 on:
-  # Schedule daily updates
+  # 每日零点执行（这个配置最小间隔5分钟）
   schedule: [{ cron: '0 0 * * *' }]
-  # (optional) Run workflow manually
+  # 手动触发
   workflow_dispatch:
-  # (optional) Run workflow when pushing on master/main
+  # master/main 分支有提交时执行
   push: {branches: ["master", "main"]}
 
 jobs:
-  hello_world_job:
+  bgm-sync:
     runs-on: ubuntu-latest
-    name: 生成收藏卡片任务
+    name: 每日同步BGM收藏卡片
     steps:
       - name: Bgm Collection Card
         id: bgm
-        uses: xiaoyvyv/bangumi-action@v1.1.14
+        uses: xiaoyvyv/bangumi-action@v1
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           bgm-user-id: 'xiaoyvyv'
           bgm-img-path: 'bgm/card.svg'
-          
-      - name: Get the output message
-        run: echo "The message was ${{ steps.bgm.outputs.message }}"
