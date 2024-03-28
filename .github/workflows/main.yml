@@ -11,7 +11,7 @@ jobs:
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           bgm-user-id: 'xiaoyvyv'
-          bgm-img-path: './bgm/card.svg'
+          bgm-img-path: 'bgm/card.svg'
           
       - name: Get the output message
         run: echo "The message was ${{ steps.bgm.outputs.message }}"
