@@ -10,7 +10,7 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: 生成收藏卡片任务
     steps:
       - name: Bgm Collection Card
         id: bgm
