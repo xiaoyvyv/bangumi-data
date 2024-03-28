@@ -18,7 +18,7 @@ jobs:
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           bgm-user-id: 'xiaoyvyv'
-          bgm-img-path: 'bgm/card.svg'
+          bgm-img-path: 'bgm1/card.svg'
 
       - name: Get the output image url
         run: echo "图片生成的链接地址 ${{ steps.bgm.outputs.message }}"
