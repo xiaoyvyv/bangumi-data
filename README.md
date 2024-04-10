@@ -2,5 +2,9 @@
 
 目前包含下列数据
 
-- 收藏卡片 Github Action [https://github.com/xiaoyvyv/bangumi-action](https://github.com/xiaoyvyv/bangumi-action)
-- 蜜柑计划 -> 班固米 ID映射表 Github Action [https://github.com/xiaoyvyv/bangumi-mikan](https://github.com/xiaoyvyv/bangumi-mikan)
+- 【收藏卡片 Github Action】
+ 
+  项目地址: [https://github.com/xiaoyvyv/bangumi-action](https://github.com/xiaoyvyv/bangumi-action)
+- 【蜜柑计划 -> 班固米 ID映射表 Github Action】
+
+  项目地址: [https://github.com/xiaoyvyv/bangumi-mikan](https://github.com/xiaoyvyv/bangumi-mikan)
