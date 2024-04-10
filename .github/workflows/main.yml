@@ -10,29 +10,39 @@ on:
 jobs:
   bgm-sync:
     runs-on: ubuntu-latest
-    name: 每日同步BGM收藏卡片
+    name: 每日同步 Bangumi.TV 相关数据任务
     steps:
-      - name: Bgm Collection Card
+      - name: 更新 Bangumi.TV 收藏卡片
         id: bgm
-        uses: xiaoyvyv/bangumi-action@v1.1.18
+        uses: xiaoyvyv/bangumi-action@v1.1.19
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           bgm-user-id: 'xiaoyvyv'
           bgm-img-path: 'data/bgm/card.svg'
-
-      - name: Get the output image url
-        run: echo "图片生成的链接地址 ${{ steps.bgm.outputs.message }}"
-        
-  mikan-sync:
-    runs-on: ubuntu-latest
-    name: 每日同步蜜柑计划的ID映射表
-    steps:
-      - name: sync mikan id-map
+          
+      - name: 更新蜜柑计划 ID 映射表
         id: mikan
         uses: xiaoyvyv/bangumi-mikan@v1.0.5
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           mikan-json-path: 'data/mikan/bangumi-mikan.json'
 
-      - name: Get the output file url
-        run: echo "上传地址 ${{ steps.mikan.outputs.message }}"
+      - name: 获取输出结果
+        run: echo "收藏卡片地址 ${{ steps.bgm.outputs.message }}，蜜柑映射表地址 ${{ steps.mikan.outputs.message }}"
+     
+      - name: Checkout Code
+        uses: actions/checkout@v4
+ 
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - 每日更新同步
+          draft: false
+          prerelease: false
