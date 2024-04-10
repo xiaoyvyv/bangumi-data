@@ -30,12 +30,12 @@ jobs:
       # - name: 获取输出结果
       #   run: echo "收藏卡片地址 ${{ steps.bgm.outputs.message }}，蜜柑映射表地址 ${{ steps.mikan.outputs.message }}"
 
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        
       - name: Create Short Sha
         id: vars
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-        
-      - name: Checkout Code
-        uses: actions/checkout@v4
  
       - name: Create Release
         id: create_release
