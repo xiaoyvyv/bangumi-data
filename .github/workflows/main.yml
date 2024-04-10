@@ -18,7 +18,7 @@ jobs:
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           bgm-user-id: 'xiaoyvyv'
-          bgm-img-path: 'bgm1/card.svg'
+          bgm-img-path: 'data/bgm/card.svg'
 
       - name: Get the output image url
         run: echo "图片生成的链接地址 ${{ steps.bgm.outputs.message }}"
@@ -32,7 +32,7 @@ jobs:
         uses: xiaoyvyv/bangumi-mikan@v1.0.0
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
-          mikan-json-path: 'mikan/bangumi-mikan.json'
+          mikan-json-path: 'data/mikan/bangumi-mikan.json'
 
       - name: Get the output file url
         run: echo "上传地址 ${{ steps.mikan.outputs.message }}"
