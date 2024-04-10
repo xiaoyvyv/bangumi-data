@@ -36,7 +36,7 @@ jobs:
           const core = require('@actions/core');
           const github = require('@actions/github');
           const tag = 'v' + github.context.sha.substring(0, 7);
-          core.setOutput("tag-name", tag);
+          core.setOutput("sha_tag", tag);
           
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -47,8 +47,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.generate_tag.outputs.random_tag }}
-          release_name: Release ${{ steps.generate_tag.outputs.random_tag }}
+          tag_name: ${{ steps.generate_tag.outputs.sha_tag }}
+          release_name: Release ${{ steps.generate_tag.outputs.sha_tag }}
           body: |
             Changes in this Release
             - 每日更新同步
