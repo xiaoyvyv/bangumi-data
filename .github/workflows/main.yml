@@ -29,24 +29,3 @@ jobs:
 
       - name: 获取输出结果
         run: echo "收藏卡片地址 ${{ steps.bgm.outputs.message }}，蜜柑映射表地址 ${{ steps.mikan.outputs.message }}"
-
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        
-      - name: Create Short Sha
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
- 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.vars.outputs.sha_short }}
-          release_name: 每日自动发布更新 ${{ steps.vars.outputs.sha_short }}
-          body: |
-            Changes in this Release
-            - 每日更新同步
-          draft: false
-          prerelease: false
