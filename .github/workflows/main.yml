@@ -20,15 +20,15 @@ jobs:
           bgm-user-id: 'xiaoyvyv'
           bgm-img-path: 'data/bgm/card.svg'
           
-      # - name: 更新蜜柑计划 ID 映射表
-      #   id: mikan
-      #   uses: xiaoyvyv/bangumi-mikan@v1.0.5
-      #   with:
-      #     github-token: '${{secrets.GITHUB_TOKEN}}'
-      #     mikan-json-path: 'data/mikan/bangumi-mikan.json'
+      - name: 更新蜜柑计划 ID 映射表
+        id: mikan
+        uses: xiaoyvyv/bangumi-mikan@v1.0.5
+        with:
+          github-token: '${{secrets.GITHUB_TOKEN}}'
+          mikan-json-path: 'data/mikan/bangumi-mikan.json'
 
-      # - name: 获取输出结果
-      #   run: echo "收藏卡片地址 ${{ steps.bgm.outputs.message }}，蜜柑映射表地址 ${{ steps.mikan.outputs.message }}"
+      - name: 获取输出结果
+        run: echo "收藏卡片地址 ${{ steps.bgm.outputs.message }}，蜜柑映射表地址 ${{ steps.mikan.outputs.message }}"
 
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -43,8 +43,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.vars.outputs.sha_short }}
-          release_name: Release v${{ steps.vars.outputs.sha_short }}
+          tag_name: ${{ steps.vars.outputs.sha_short }}
+          release_name: 每日自动发布更新 ${{ steps.vars.outputs.sha_short }}
           body: |
             Changes in this Release
             - 每日更新同步
