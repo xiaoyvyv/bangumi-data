@@ -20,16 +20,21 @@ jobs:
           bgm-user-id: 'xiaoyvyv'
           bgm-img-path: 'data/bgm/card.svg'
           
-      - name: 更新蜜柑计划 ID 映射表
-        id: mikan
-        uses: xiaoyvyv/bangumi-mikan@v1.0.5
-        with:
-          github-token: '${{secrets.GITHUB_TOKEN}}'
-          mikan-json-path: 'data/mikan/bangumi-mikan.json'
+      # - name: 更新蜜柑计划 ID 映射表
+      #   id: mikan
+      #   uses: xiaoyvyv/bangumi-mikan@v1.0.5
+      #   with:
+      #     github-token: '${{secrets.GITHUB_TOKEN}}'
+      #     mikan-json-path: 'data/mikan/bangumi-mikan.json'
 
-      - name: 获取输出结果
-        run: echo "收藏卡片地址 ${{ steps.bgm.outputs.message }}，蜜柑映射表地址 ${{ steps.mikan.outputs.message }}"
-     
+      # - name: 获取输出结果
+      #   run: echo "收藏卡片地址 ${{ steps.bgm.outputs.message }}，蜜柑映射表地址 ${{ steps.mikan.outputs.message }}"
+      
+      - name: Generate Tag
+        id: generate_tag
+        run: |
+          core.setOutput("tag-name", 'v' + github.sha.substring(0,7));
+          
       - name: Checkout Code
         uses: actions/checkout@v4
  
@@ -37,10 +42,10 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ steps.generate_tag.outputs.random_tag }}
+          release_name: Release ${{ steps.generate_tag.outputs.random_tag }}
           body: |
             Changes in this Release
             - 每日更新同步
