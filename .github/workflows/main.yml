@@ -22,3 +22,17 @@ jobs:
 
       - name: Get the output image url
         run: echo "图片生成的链接地址 ${{ steps.bgm.outputs.message }}"
+        
+  mikan-sync:
+    runs-on: ubuntu-latest
+    name: 每日同步蜜柑计划的ID映射表
+    steps:
+      - name: sync mikan id-map
+        id: mikan
+        uses: xiaoyvyv/bangumi-mikan@v1.0.0
+        with:
+          github-token: '${{secrets.GITHUB_TOKEN}}'
+          mikan-json-path: 'mikan/bangumi-mikan.json'
+
+      - name: Get the output file url
+        run: echo "上传地址 ${{ steps.mikan.outputs.message }}"
