@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: sync mikan id-map
         id: mikan
-        uses: xiaoyvyv/bangumi-mikan@v1.0.4
+        uses: xiaoyvyv/bangumi-mikan@v1.0.5
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           mikan-json-path: 'data/mikan/bangumi-mikan.json'
