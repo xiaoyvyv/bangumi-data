@@ -8,3 +8,7 @@
 - 【蜜柑计划 -> 班固米 ID映射表 Github Action】
 
   项目地址: [https://github.com/xiaoyvyv/bangumi-mikan](https://github.com/xiaoyvyv/bangumi-mikan)
+  
+  示例数据（原始数据）: https://github.com/xiaoyvyv/bangumi-data/raw/main/data/mikan/bangumi-mikan.json
+  
+  示例数据（CDN加速）: https://cdn.jsdelivr.net/gh/xiaoyvyv/bangumi-data@latest/data/mikan/bangumi-mikan.json
