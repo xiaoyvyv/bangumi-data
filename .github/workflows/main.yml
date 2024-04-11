@@ -22,7 +22,7 @@ jobs:
           
       - name: 更新蜜柑计划 ID 映射表
         id: mikan
-        uses: xiaoyvyv/bangumi-mikan@v1.0.5
+        uses: xiaoyvyv/bangumi-mikan@v1.0.6
         with:
           github-token: '${{secrets.GITHUB_TOKEN}}'
           mikan-json-path: 'data/mikan/bangumi-mikan.json'
